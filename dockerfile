@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /code
 
-COPY /code/. .
+COPY . .
 
 RUN dotnet restore
 

@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+      - "postgres"
+    ports:
+      - "8000:80"
+    environment:
+      DB_CONNECTION_STRING: "host=postgres;port=5432;database=studentsdb;username=demouser;password=demouser"
+    networks:
+      - demonet
+  postgres:
+    image: "postgres"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "demouser"
+      POSTGRES_PASSWORD: "demouser"
+      POSTGRES_DB: "studentsdb"
+    networks:
+      - demonet
+volumes:
+  db_data:
+networks:
+  demonet:
+    driver: bridge
