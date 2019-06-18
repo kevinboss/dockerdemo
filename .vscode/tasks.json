@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/dockerdemo.csproj"
+                "${workspaceFolder}/code/dockerdemo.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/dockerdemo.csproj"
+                "${workspaceFolder}/code/dockerdemo.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/dockerdemo.csproj"
+                "${workspaceFolder}/code/dockerdemo.csproj"
             ],
             "problemMatcher": "$tsc"
         }
