@@ -1,0 +1,1 @@
+docker run --rm -d --name postgres -e POSTGRES_DB=studentsdatabase -e POSTGRES_USER=demouser -e POSTGRES_PASSWORD=demouser postgres
