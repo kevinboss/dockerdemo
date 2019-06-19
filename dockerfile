@@ -1,13 +1,13 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
-WORKDIR /code
+WORKDIR /
 
-COPY . .
+COPY ./src/ .
 
 RUN dotnet restore
 
 RUN dotnet publish --output /output --configuration Release
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 as runtime
 
 COPY --from=build /output /app
 

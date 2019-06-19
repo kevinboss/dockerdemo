@@ -1,36 +1,31 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/code/dockerdemo.csproj"
-            ],
-            "problemMatcher": "$tsc"
+    "version": "0.1.0",
+    "osx": {
+        "command": "/bin/bash",
+        "options": {
+            "cwd": "${workspaceRoot}"
         },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/code/dockerdemo.csproj"
-            ],
-            "problemMatcher": "$tsc"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "${workspaceFolder}/code/dockerdemo.csproj"
-            ],
-            "problemMatcher": "$tsc"
-        }
-    ]
+        "tasks": [
+            {
+                "taskName": "buildForDebug",
+                "suppressTaskName": true,
+                "args": [
+                    "-c",
+                    "./scripts/dockerTask.sh buildForDebug"
+                ],
+                "isBuildCommand": true,
+                "showOutput": "always"
+            },
+            {
+                "taskName": "cleanup",
+                "suppressTaskName": true,
+                "args": [
+                    "-c",
+                    "./scripts/dockerTask.sh cleanup"
+                ],
+                "isBuildCommand": false,
+                "showOutput": "always"
+            }
+        ]
+    }
 }
