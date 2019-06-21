@@ -15,7 +15,7 @@
                 "pipeProgram": "docker",
                 "pipeCwd": "${workspaceRoot}",
                 "pipeArgs": [
-                    "exec -i dockerdemo_web_debug"
+                    "exec -i dockerdemo_web_1"
                 ],
                 "quoteArgs": false,
                 "debuggerPath": "/vsdbg/vsdbg"

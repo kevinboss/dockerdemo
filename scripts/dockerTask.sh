@@ -1,5 +1,5 @@
 imageName="dockerdemo_web"
-containerName="${imageName}_debug"
+containerName="${imageName}_1"
 
 # Kills all containers based on the image
 killContainers() {
@@ -24,13 +24,14 @@ composeUp() {
     ENVIRONMENT="debug"
   fi
 
-  composeArgs="-f docker-compose.yml -f docker-compose.dev.yml"
+  dockerFile="dockerfile"
+  composeArgs="-f docker-compose.yml"
   if [[ $ENVIRONMENT != "release" ]]; then
+    dockerFile="$ENVIRONMENT.dockerfile"
     composeArgs="-f docker-compose.yml -f $ENVIRONMENT.docker-compose.yml"
   fi
 
-  echo "Compose buid $composeCommand."
-  docker-compose $composeArgs build
+  docker build -t $imageName -f $dockerFile .
   echo "Compose up $composeCommand."
   docker-compose $composeArgs up -d
 }
